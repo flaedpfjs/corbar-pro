@@ -137,7 +137,7 @@
     <!--  iBatis SQL map定义。                                                    -->
     <bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
     	<!-- 这里配置的dataSource0为默认的数据源,如果找不到数据库的话则到该数据源中查找 -->
-   	 	<property name="dataSource" ref="dataSource0" />  
+   	 	<property name="dataSource" ref="dataSource1" />
         <property name="configLocation">
             <value>classpath:/sqlmap-config.xml</value>
         </property>
@@ -154,9 +154,4 @@
 		<property name="profileLongTimeRunningSql" value="true" />
 		<property name="longTimeRunningSqlIntervalThreshold" value="3600000" />
 	</bean>
-    
-    
-    
-    
-    
 </beans>

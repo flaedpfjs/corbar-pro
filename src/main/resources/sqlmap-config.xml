@@ -7,5 +7,7 @@
               useStatementNamespaces="true"/>
               
     <sqlMap resource="ibatis/cont-sqlmap.xml"/>
-    
+    <sqlMap resource="ibatis/tb2-sqlmap.xml"/>
+
+
 </sqlMapConfig>

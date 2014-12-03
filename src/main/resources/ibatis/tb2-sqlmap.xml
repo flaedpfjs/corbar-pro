@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="Tb2">
+	<!-- Alias Map Defined -->
+	<typeAlias alias="Tb2" type="com.hj.cobar.bean.Tb2" />
+	<resultMap id="tb2" class="Tb2">
+		<result property="id" column="id" />
+		<result property="val" column="val" />
+	</resultMap>
+	<!-- 根据主键查询 -->
+	<select id="Tb2.getTb2Key" resultMap="tb2" parameterClass="hashMap">
+		SELECT id , val  FROM tb2
+		WHERE
+		id=#id#
+	</select>
+
+	<insert id="Tb2.insertTb2" parameterClass="tb2">
+		INSERT INTO tb2
+		<dynamic prepend="(" close=")">
+			<isNotEmpty prepend="," property="id">
+				id
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="val">
+				val
+			</isNotEmpty>
+
+		</dynamic>
+		VALUES
+		<dynamic prepend="(" close=")">
+			<isNotEmpty prepend="," property="id">
+				#id#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="val">
+				#val#
+			</isNotEmpty>
+		</dynamic>
+		<selectKey resultClass="int" keyProperty="id">
+			SELECT LAST_INSERT_ID() AS ID
+		</selectKey>
+	</insert>
+
+</sqlMap>

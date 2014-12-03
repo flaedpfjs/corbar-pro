@@ -10,7 +10,7 @@ import com.hj.cobar.query.ContQuery;
 import com.hj.cobar.service.ContService;
 
 /**
- *
+ *  分库分表
  */
 public class AppTest extends TestCase {
     ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
@@ -20,7 +20,7 @@ public class AppTest extends TestCase {
      * 没有使用对象查询直接使用基本类型则到默认的数据源中去查找数据
      */
     public void test1(){
-        Cont cont = contService.getContByKey(2L);
+        Cont cont = contService.getContByKey(12L);
         System.out.println(cont);
 
     }
@@ -45,7 +45,7 @@ public class AppTest extends TestCase {
         ContQuery contQuery = new ContQuery();
         contQuery.setTaobaoId(2809L);
         List<Cont> list = contService.getContList(contQuery);
-        if(list != null){
+        if(list != null && list.size() != 0){
             System.out.println(list.get(0));
         }
     }
